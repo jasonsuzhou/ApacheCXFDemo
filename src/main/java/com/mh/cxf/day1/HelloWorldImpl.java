@@ -16,9 +16,21 @@ public class HelloWorldImpl implements HelloWorld {
 	}
 
 	public String sayHiToUser(User user) {
+		String retVal = "";
 		System.out.println("come in sayHiToUser");
+		if (null == user) {
+			retVal = "Error: user object is null";
+		} else {
+			try {
+				System.out.println("Sleep 3 seconds before return");
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		users.put(users.size() + 1, user);
-		return "Hello, " + user.getName();
+		retVal = "Hello, " + user.getName();
+		return retVal;
 	}
 
 	@Override
